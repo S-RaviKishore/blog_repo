@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  {%extends 'myApp/parent.html'%}
+  {%block title_block%}
+    Ravi Kishore's blog
+  {%endblock%}
+  <body>
+    {%block content_block%}
+      <h1 style="color: red">Ravi Kishore's Home blog</h1>
+      {%for post in post_list%}
+      <a href="{{post.get_absolute_url}}"><h2>{{post.title}}</h2></a>
+      Published on {{post.publish}} by {{post.author|title}}
+      {{post.body|truncatewords:30|linebreaks}}
+      {%endfor%}
+      {% include 'myApp/pagination.html' with page=post_list %}
+    {% endblock %}
+  </body>
+</html>
